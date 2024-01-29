@@ -50,7 +50,7 @@ export default class App extends Component {
   ];
 
   handleClick = (id) => {
-    
+    this.todoData = this.todoData.filter(data => data.id!== id);
   };
   
   render() {
