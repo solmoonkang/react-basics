@@ -1,12 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 
-function App() {
-  return (
-    <div>
+// Functional Conference
+// function App() {
+//   return (
+//     <div>
       
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
+
+
+// Class Conference
+import React, {Component} from "react";
+
+export default class App extends Component {
+  render() {
+    return (
+      <div className="container">
+        <div className="todoBlock">
+
+        </div>
+      </div>
+    );
+  }
+}
