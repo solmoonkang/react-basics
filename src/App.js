@@ -19,6 +19,22 @@ import './App.css';
 
 export default class App extends Component {
 
+  state = {
+    todoData: [
+      {
+        id: "1",
+        title: "공부하기",
+        completed: true
+      },
+      {
+        id: "2",
+        title: "청소하기",
+        completed: false
+      },
+    ],
+    value: "",
+  };
+
   btnStyle = {
     color: "#fff",
     border: "none",
@@ -36,21 +52,9 @@ export default class App extends Component {
     };
   };
 
-  todoData = [
-    {
-      id: "1",
-      title: "공부하기",
-      completed: true
-    },
-    {
-      id: "2",
-      title: "청소하기",
-      completed: false
-    }
-  ];
-
   handleClick = (id) => {
-    this.todoData = this.todoData.filter(data => data.id!== id);
+    let newTodoData = this.state.todoData.filter((data) => data.id!== id);
+    this.setState({ todoData: newTodoData });
   };
   
   render() {
@@ -61,7 +65,7 @@ export default class App extends Component {
             <h1>할 일 목록</h1>
           </div>
 
-          {this.todoData.map(data => (
+          {this.state.todoData.map(data => (
             <div style={this.getStyle()} key={data.id}>
             <input type="checkbox" defaultChecked={false} />
             {" "}{data.title}
