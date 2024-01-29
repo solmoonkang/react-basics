@@ -56,6 +56,10 @@ export default class App extends Component {
     let newTodoData = this.state.todoData.filter((data) => data.id!== id);
     this.setState({ todoData: newTodoData });
   };
+
+  handleChange = (e) => {
+    this.setState({ value: e.target.value });
+  };
   
   render() {
     return (
@@ -81,7 +85,8 @@ export default class App extends Component {
               name="value"
               style={{ flex: '10', padding: '5px' }}
               placeholder="해야 할 일을 입력하세요."
-              value=""
+              value={this.state.value}
+              onChange={this.handleChange}
             />
             {/* 입력 버튼 */}
             <input
