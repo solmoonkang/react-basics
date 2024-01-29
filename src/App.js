@@ -25,6 +25,12 @@ export default class App extends Component {
           <div className="title">
             <h1>할 일 목록</h1>
           </div>
+
+          <div>
+            <input type="checkbox" defaultChecked={false} />
+            공부하기
+            <button >x</button>
+          </div>
         </div>
       </div>
     );
