@@ -72,6 +72,25 @@ export default class App extends Component {
             <button style={this.btnStyle} onClick={() => this.handleClick(data.id)}>x</button>
           </div>
           ))}
+
+          {/* 할 일 목록 추가하기 */}
+          <form style={{ display: 'flex' }}>
+            {/* 할 일 목록을 입력하는 부분 */}
+            <input
+              type="text"
+              name="value"
+              style={{ flex: '10', padding: '5px' }}
+              placeholder="해야 할 일을 입력하세요."
+              value=""
+            />
+            {/* 입력 버튼 */}
+            <input
+              type="submit"
+              value="입력"
+              className="btn"
+              style={{ flex: '1' }}
+            />
+          </form>
         </div>
       </div>
     );
