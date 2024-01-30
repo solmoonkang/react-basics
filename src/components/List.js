@@ -13,6 +13,7 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
             return data;
         });
         setTodoData(newTodoData);
+        localStorage.setItem("todoData", JSON.stringify(newTodoData));
     }
 
     const handleEditChange = (event) => {
@@ -28,6 +29,8 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
             return data;
         });
         setTodoData(newTodoData);
+        localStorage.setItem("todoData", JSON.stringify(newTodoData));
+
         setIsEditing(false);
     }
 
@@ -49,7 +52,7 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
             className={`${snapshot.isDragging ? "bg-gray-400" : "bg-gray-100"} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 border rounderd`} 
             key={id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
                 <div className="items-center">
-                    <input type="checkbox" onChange={() => handleCompleChange(id)} defaultChecked={false} />{" "}
+                    <input type="checkbox" onChange={() => handleCompleChange(id)} defaultChecked={completed} />{" "}
                     <span className={completed ? "line-through" : undefined}>{title}</span>
                 </div>
                 <div className="items-center">
