@@ -34,7 +34,8 @@ const Lists = React.memo(({ todoData, setTodoData, handleClick }) => {
                                     id={data.id} 
                                     title={data.title} 
                                     completed={data.completed} 
-                                    todoData={setTodoData} 
+                                    todoData={todoData} 
+                                    setTodoData={setTodoData}
                                     provided={provided} 
                                     snapshot={snapshot} />
                                 )}
