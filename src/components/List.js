@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const List = React.memo(({ id, title, completed, todoData, setTodoData, provided, snapshot, handleClick }) => {
+
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedTitle, setEditedTitle] = useState(title);
 
     const handleCompleChange = (id) => {
         let newTodoData = todoData.map((data) => {
