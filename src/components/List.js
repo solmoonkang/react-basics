@@ -1,11 +1,6 @@
 import React from 'react'
 
-function List({ id, title, completed, todoData, setTodoData, provided, snapshot }) {
-
-    const handleClick = (id) => {
-        let newTodoData = todoData.filter((data) => data.id!== id);
-        setTodoData(newTodoData);
-    };
+const List = React.memo(({ id, title, completed, todoData, setTodoData, provided, snapshot }) => {
 
     const handleCompleChange = (id) => {
         let newTodoData = todoData.map((data) => {
@@ -29,7 +24,7 @@ function List({ id, title, completed, todoData, setTodoData, provided, snapshot 
                 <button className="px-4 py-2 float-right" onClick={() => handleClick(id)}>x</button>
             </div>
         </div>
-      )
-}
+      );
+});
 
 export default List
