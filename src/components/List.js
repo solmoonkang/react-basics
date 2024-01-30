@@ -15,20 +15,36 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
         setTodoData(newTodoData);
     }
 
+    const handleEditChange = (event) => {
+        setEditedTitle(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        let newTodoData = todoData.map((data) => {
+            if (data.id === id) {
+                data.title = editedTitle;
+            }
+            return data;
+        });
+        setTodoData(newTodoData);
+        setIsEditing(false);
+    }
+
     if (isEditing) {
         return ( <div>editing..</div> );
     } else {
         return (
-            <div 
-            className={`${snapshot.isDragging ? "bg-gray-400" : "bg-gray-100"} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 border rounderd`} 
-            key={id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
+            <div className={`flex items-center justify-between w-full px-4 py-1 my-2 bg-grat-100 text-gray-600 border rounderd`}>
                 <div className="items-center">
-                    <input type="checkbox" onChange={() => handleCompleChange(id)} defaultChecked={false} />{" "}
-                    <span className={completed ? "line-through" : undefined}>{title}</span>
+                    <form onSubmit={handleSubmit}>
+                        <input className="w-full px-3 py-2 mr-4 text-gray-500" onChange={handleEditChange} value={editedTitle} autoFocus />
+                    </form>
                 </div>
                 <div className="items-center">
-                    <button className="px-4 py-2 float-right" onClick={() => handleClick(id)}>x</button>
-                    <button className="px-4 py-2 float-right" onClick={() => setIsEditing(true)}>edit</button>
+                    <button className="px-4 py-2 float-right" onClick={() => setIsEditing(false)}>x</button>
+                    <button className="px-4 py-2 float-right" onClick={handleSubmit} type="submit">save</button>
                 </div>
             </div>
         );
