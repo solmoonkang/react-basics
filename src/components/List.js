@@ -25,6 +25,7 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
             </div>
             <div className="items-center">
                 <button className="px-4 py-2 float-right" onClick={() => handleClick(id)}>x</button>
+                <button className="px-4 py-2 float-right" onClick={() => setIsEditing(true)}>edit</button>
             </div>
         </div>
       );
