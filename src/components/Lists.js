@@ -2,21 +2,6 @@ import React from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 export default function List({todoData, setTodoData}) {
-    
-    const handleClick = (id) => {
-        let newTodoData = todoData.filter((data) => data.id!== id);
-        setTodoData(newTodoData);
-    };
-
-    const handleCompleChange = (id) => {
-        let newTodoData = todoData.map((data) => {
-            if (data.id === id) {
-                data.completed =!data.completed;
-            }
-            return data;
-        });
-        setTodoData(newTodoData);
-    }
 
     const handleEnd = (result) => {
         if (!result.destination) return;
