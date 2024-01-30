@@ -1,6 +1,6 @@
 import React from 'react'
 
-const List = React.memo(({ id, title, completed, todoData, setTodoData, provided, snapshot }) => {
+const List = React.memo(({ id, title, completed, todoData, setTodoData, provided, snapshot, handleClick }) => {
 
     const handleCompleChange = (id) => {
         let newTodoData = todoData.map((data) => {
