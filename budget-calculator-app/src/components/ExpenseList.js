@@ -3,8 +3,12 @@ import { Draggable } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import { DragDropContext } from 'react-beautiful-dnd';
 import ExpenseItem from "./ExpenseItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ExpenseList = React.memo(({ handleClick, budgetData, setBudgetData }) => {
+
+    // TODO: 목록 지우기 버튼을 누르면 모든 항목들이 다 삭제되는 기능을 구현해야 된다.
 
     const handleEnd = (result) => {
         if (!result.destination) return;
@@ -33,7 +37,7 @@ const ExpenseList = React.memo(({ handleClick, budgetData, setBudgetData }) => {
                     )}
                 </Droppable>
             </DragDropContext>
-            <button className="px-4 py-2 border rounded">목록 지우기</button>
+            <button className="px-4 py-2 border rounded">목록 지우기 <FontAwesomeIcon icon={faTrashAlt} /></button>
         </div>
     )
 })
