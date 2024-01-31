@@ -19,6 +19,8 @@ const ExpenseItem = React.memo(({ id, expense, budgetData, setBudgetData, provid
             return data;
         });
         setBudgetData(newBudgetData);
+        localStorage.setItem("budgetData", JSON.stringify(newBudgetData));
+
         setIsEditing(false);
     }
 
@@ -45,7 +47,7 @@ const ExpenseItem = React.memo(({ id, expense, budgetData, setBudgetData, provid
                 <div className="bg-white leading-6 px-5 py-2.5 mb-4 border border-gray-300 flex justify-between transition-all duration-300 transform hover:scale-105">
                     <div className="flex justify-between w-3/5">
                         <input className="mr-8" />{expense.category}
-                        <span className="font-light text-base py-0.5 px-0.5 ml-auto">{expense.amount} 원</span>
+                        <span className="font-light text-base py-0.5 px-0.5 ml-auto">{Number(expense.amount).toLocaleString()} 원</span>
                     </div>
                     <div>
                         <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-green-500 m-1" onClick={() => setIsEditing(true)}><FontAwesomeIcon icon={faEdit} /></button>
