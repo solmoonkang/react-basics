@@ -8,8 +8,6 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ExpenseList = React.memo(({ handleClick, budgetData, setBudgetData }) => {
 
-    // TODO: 목록 지우기 버튼을 누르면 모든 항목들이 다 삭제되는 기능을 구현해야 된다.
-
     const handleEnd = (result) => {
         if (!result.destination) return;
         const newBudgetData = budgetData;
@@ -17,6 +15,10 @@ const ExpenseList = React.memo(({ handleClick, budgetData, setBudgetData }) => {
 
         newBudgetData.splice(result.destination.index, 0, reorderedItem);
         setBudgetData(newBudgetData);
+    }
+
+    const handleRemoveClick = () => {
+        setBudgetData([]);
     }
 
     return (
@@ -37,7 +39,7 @@ const ExpenseList = React.memo(({ handleClick, budgetData, setBudgetData }) => {
                     )}
                 </Droppable>
             </DragDropContext>
-            <button className="px-4 py-2 border rounded">목록 지우기 <FontAwesomeIcon icon={faTrashAlt} /></button>
+            <button className="px-4 py-2 border rounded" onClick={handleRemoveClick}>목록 지우기 <FontAwesomeIcon icon={faTrashAlt} /></button>
         </div>
     )
 })
