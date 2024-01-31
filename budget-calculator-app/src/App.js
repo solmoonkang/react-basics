@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import React, { useState, useCallback } from "react";
 import ExpenseForm from "./components/ExpenseForm";
@@ -5,12 +7,18 @@ import ExpenseList from "./components/ExpenseList";
 
 function App() {
 
+  // TODO: ExpenseList에서 비용을 모두 더한 값을 총지출로 출력되도록 구현해야 한다.
+  // TODO: 추가적으로, localStorage에도 값을 저장하는 코드를 구현해야 한다.
+  
+
   const [budgetData, setBudgetData] = useState([]);
   const [expense, setExpense] = useState({ category: "", amount: "" });
 
   const handleClick = useCallback((id) => {
     let newBudgetData = budgetData.filter((data) => data.id !== id);
     setBudgetData(newBudgetData);
+
+    toast("아이템이 삭제되었습니다.", { autoClose: 3000 });
   }, [budgetData]);
 
   const handleSubmit = (event) => {
@@ -20,13 +28,10 @@ function App() {
       id: Date.now(),
       expense: expense
     }
-
-    // 원래 있던 경비에 새로운 경비를 추가해준다.
     setBudgetData(prev => [...prev, newBudgetData]);
-    // TODO: 추가적으로, localStorage에도 값을 저장하는 코드를 구현해야 한다.
-
-    // 입력 폼에 있는 내용을 지워줘야 한다.
     setExpense({ category: "", amount: "" });
+
+    toast("아이템이 생성되었습니다.", { autoClose: 3000 });
   }
 
   return (
@@ -35,6 +40,7 @@ function App() {
         <div className="flex justify-between mb-3 text-4xl">
           <h1>예산 계산기</h1>
         </div>
+        <ToastContainer />
         <ExpenseForm handleSubmit={handleSubmit} expense={expense} setExpense={setExpense} />
         <ExpenseList handleClick={handleClick} budgetData={budgetData} setBudgetData={setBudgetData} />
         <div className="flex justify-end mt-4">
