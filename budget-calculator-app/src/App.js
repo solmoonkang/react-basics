@@ -8,6 +8,11 @@ function App() {
   const [budgetData, setBudgetData] = useState([]);
   const [expense, setExpense] = useState({ category: "", amount: "" });
 
+  const handleClick = useCallback((id) => {
+    let newBudgetData = budgetData.filter((data) => data.id !== id);
+    setBudgetData(newBudgetData);
+  }, [budgetData]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     
@@ -31,7 +36,7 @@ function App() {
           <h1>예산 계산기</h1>
         </div>
         <ExpenseForm handleSubmit={handleSubmit} expense={expense} setExpense={setExpense} />
-        <ExpenseList />
+        <ExpenseList handleClick={handleClick} budgetData={budgetData} setBudgetData={setBudgetData} />
         <div className="flex justify-end mt-4">
           <p className="text-3xl">
             총지출: 
