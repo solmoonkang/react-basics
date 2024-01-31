@@ -15,10 +15,12 @@ const ExpenseList = React.memo(({ handleClick, budgetData, setBudgetData }) => {
 
         newBudgetData.splice(result.destination.index, 0, reorderedItem);
         setBudgetData(newBudgetData);
+        localStorage.setItem("budgetData", JSON.stringify(newBudgetData));
     }
 
     const handleRemoveClick = () => {
         setBudgetData([]);
+        localStorage.setItem("budgetData", JSON.stringify([]));
     }
 
     return (
