@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-basics/budget-calculator-app/static/css/main.ae2f1642.css",
+    "main.js": "/react-basics/budget-calculator-app/static/js/main.3409366c.js",
+    "static/js/787.de1b8135.chunk.js": "/react-basics/budget-calculator-app/static/js/787.de1b8135.chunk.js",
+    "index.html": "/react-basics/budget-calculator-app/index.html",
+    "main.ae2f1642.css.map": "/react-basics/budget-calculator-app/static/css/main.ae2f1642.css.map",
+    "main.3409366c.js.map": "/react-basics/budget-calculator-app/static/js/main.3409366c.js.map",
+    "787.de1b8135.chunk.js.map": "/react-basics/budget-calculator-app/static/js/787.de1b8135.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae2f1642.css",
+    "static/js/main.3409366c.js"
+  ]
+}
