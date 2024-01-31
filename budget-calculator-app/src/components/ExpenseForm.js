@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 export default function Form({ handleSubmit, expense, setExpense }) {
 
@@ -19,7 +21,7 @@ export default function Form({ handleSubmit, expense, setExpense }) {
                         <input id="amount" name="amount" className="form-control w-full h-12 border-b border-gray-600 bg-transparent outline-none" type="number" placeholder="예) 100" value={expense.amount} onChange={handleChange} />
                     </div>
                 </div>
-                <button className="px-4 py-2 border rounded" type="submit">제출</button>
+                <button className="px-4 py-2 border rounded" type="submit">제출 <FontAwesomeIcon icon={faPaperPlane} /></button>
             </form>
         </div>
     );
