@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt, faSave } from "@fortawesome/free-solid-svg-icons";
 
 const ExpenseItem = React.memo(({ id, expense, budgetData, setBudgetData, provided, snapshot, handleClick }) => {
 
     // TODO: 수정을 눌렀을 때, 지출 항목과 비용을 수정할 수 있는 기능을 구현해야 된다.
-    // TODO: 수정과 삭제 아이콘을 변경해준다.
 
     const [isEditing, setIsEditing] = useState(false);
     const [editedExpense, setEditedExpense] = useState(expense);
@@ -32,8 +33,8 @@ const ExpenseItem = React.memo(({ id, expense, budgetData, setBudgetData, provid
                         <input className="font-light text-base py-0.5 px-0.5" value={editedExpense.amount} onChange={handleEditChange} autoFocus />
                     </form>
                     <div>
-                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-green-500" onClick={handleSubmit}>저장</button>
-                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-red-500" onClick={() => setIsEditing(true)}>삭제</button>
+                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-green-500" onClick={handleSubmit}><FontAwesomeIcon icon={faSave} /></button>
+                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-red-500" onClick={() => setIsEditing(true)}><FontAwesomeIcon icon={faTrashAlt} /></button>
                     </div>
                 </li>
             </div>
@@ -47,8 +48,8 @@ const ExpenseItem = React.memo(({ id, expense, budgetData, setBudgetData, provid
                         <span className="font-light text-base py-0.5 px-0.5">{expense.amount} 원</span>
                     </div>
                     <div>
-                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-green-500" onClick={() => setIsEditing(true)}>수정</button>
-                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-red-500" onClick={() => handleClick(id)}>삭제</button>
+                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-green-500 m-1" onClick={() => setIsEditing(true)}><FontAwesomeIcon icon={faEdit} /></button>
+                        <button className="bg-transparent border-none text-x1 focus:outline-none cursor-pointer text-red-500 m-1" onClick={() => handleClick(id)}><FontAwesomeIcon icon={faTrashAlt} /></button>
                     </div>
                 </li>
             </div>
