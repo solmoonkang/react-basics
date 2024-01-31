@@ -34,6 +34,8 @@ function App() {
     toast("아이템이 생성되었습니다.", { autoClose: 3000 });
   }
 
+  const totalExpense = budgetData.reduce((expense, item) => expense + Number(item.expense.amount), 0);
+
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-yellow-100">
       <div className="w-full p-6 m-4 rounded lg:w-3/4 lg:max-lg">
@@ -44,10 +46,9 @@ function App() {
         <ExpenseForm handleSubmit={handleSubmit} expense={expense} setExpense={setExpense} />
         <ExpenseList handleClick={handleClick} budgetData={budgetData} setBudgetData={setBudgetData} />
         <div className="flex justify-end mt-4">
-          <p className="text-3xl">
-            총지출: 
-            <span>원</span>
-          </p>
+          <div className="text-3xl">
+            총지출: {totalExpense}원
+          </div>
         </div>
       </div>
     </div>

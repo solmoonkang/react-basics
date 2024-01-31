@@ -4,8 +4,6 @@ import { faEdit, faTrashAlt, faSave } from "@fortawesome/free-solid-svg-icons";
 
 const ExpenseItem = React.memo(({ id, expense, budgetData, setBudgetData, provided, snapshot, handleClick }) => {
 
-    // TODO: 수정을 눌렀을 때, 지출 항목과 비용을 수정할 수 있는 기능을 구현해야 된다.
-
     const [isEditing, setIsEditing] = useState(false);
     const [editedExpense, setEditedExpense] = useState(expense);
 
