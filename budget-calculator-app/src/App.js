@@ -5,18 +5,17 @@ import React, { useState, useCallback } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 
+const initialBudgetData = localStorage.getItem("budgetData") ? JSON.parse(localStorage.getItem("budgetData")) : [];
+
 function App() {
-
-  // TODO: ExpenseList에서 비용을 모두 더한 값을 총지출로 출력되도록 구현해야 한다.
-  // TODO: 추가적으로, localStorage에도 값을 저장하는 코드를 구현해야 한다.
   
-
-  const [budgetData, setBudgetData] = useState([]);
+  const [budgetData, setBudgetData] = useState(initialBudgetData);
   const [expense, setExpense] = useState({ category: "", amount: "" });
 
   const handleClick = useCallback((id) => {
     let newBudgetData = budgetData.filter((data) => data.id !== id);
     setBudgetData(newBudgetData);
+    localStorage.setItem("budgetData", JSON.stringify(newBudgetData));
 
     toast("아이템이 삭제되었습니다.", { autoClose: 3000 });
   }, [budgetData]);
@@ -29,8 +28,10 @@ function App() {
       expense: expense
     }
     setBudgetData(prev => [...prev, newBudgetData]);
+    localStorage.setItem("budgetData", JSON.stringify([...budgetData, newBudgetData]));
+    
     setExpense({ category: "", amount: "" });
-
+    
     toast("아이템이 생성되었습니다.", { autoClose: 3000 });
   }
 
@@ -47,7 +48,8 @@ function App() {
         <ExpenseList handleClick={handleClick} budgetData={budgetData} setBudgetData={setBudgetData} />
         <div className="flex justify-end mt-4">
           <div className="text-3xl">
-            총지출: {totalExpense}원
+            총지출: 
+            <span>{Number(totalExpense).toLocaleString()}원</span>
           </div>
         </div>
       </div>
