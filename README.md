@@ -8,4 +8,4 @@
 - **폴더 이름 및 변수 이름을 명확하게 작성한다.**
 
 ## 📂 결과물 Repository 주소
-[여기](https://solmoonkang.github.io/javascript-todo/Todo%20App/)에서 확인하실 수 있습니다.
+[여기](https://solmoonkang.github.io/react-budget-calculator/)에서 확인하실 수 있습니다.
