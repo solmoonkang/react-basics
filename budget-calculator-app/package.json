@@ -44,5 +44,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   },
-  "homepage": "https://solmoonkang.github.io/react-basics/"
+  "homepage": "https://solmoonkang.github.io/react-budget-calculator/"
 }
